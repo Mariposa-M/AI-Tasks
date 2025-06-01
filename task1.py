@@ -64,7 +64,23 @@ def get_help():
     print('2: Get info about Crypto Coins has/have the best market cap')
     print('3: Get info about the best crypto saving energy')
     print('4: Get info about the trending up & has a top-tier sustainability score!')
+    print('5: Have an advice for the most profitable crypto now!')
+    print('6: Know which the most sustainable crypto now!')
     print('Quit: To quit')
+
+
+def profit_advice():
+    for coin in crypto_db:
+        if crypto_db[coin]['price_trend'] == 'rising' and crypto_db[coin]['market_cap'] == 'high':
+            print(
+                f'If you want to invest your money, {coin} will be a good choice!')
+
+
+def sustainable_advice():
+    for coin in crypto_db:
+        if crypto_db[coin]['energy_use'] == 'low' and crypto_db[coin]['sustainability_score'] > 7/10:
+            print(
+                f'If you want the best sustainable crypto, so go for {coin}!')
 
 
 print('~ Welcome to Your CryptoBuddy ~ ')
@@ -73,11 +89,12 @@ print('If you need help: just type "Help"')
 user_query = input('How can i help you? ').lower().strip()
 
 while True:
-    user_query = input('So how can i help you? ').lower().strip()
     if user_query == 'help':
         get_help()
+
     if user_query in ['0', 'general']:
         get_info()
+
     if user_query in ['stable', 'least price', '1']:
         best_price()
     if user_query in ['market cap', 'cap', '2']:
@@ -87,8 +104,14 @@ while True:
     if user_query in ['long-term', 'growth', 'sustainability score', '4']:
         get_long_term_growth()
 
+    if user_query in ['profit', '5']:
+        profit_advice()
+    if user_query in ['sustainable', '6']:
+        sustainable_advice()
+
     if not user_query:
         print('Please tell me how to help you or just type "Help"')
     if user_query in ['quit', 'exit']:
         print('See you later!')
         break
+    user_query = input('So what\'s your choice? ').lower().strip()
