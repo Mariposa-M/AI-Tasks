@@ -53,7 +53,7 @@ def best_energy_use():
 
 def get_long_term_growth():
     coin = max(
-        crypto_db, key=lambda x: crypto_db[x]['sustainability_score'], )
+        crypto_db, key=lambda x: crypto_db[x]['sustainability_score'])
     if coin:
         print(f'{coin} is trending up and has a top-tier sustainability score!')
 
